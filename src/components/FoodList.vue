@@ -4,16 +4,16 @@
     <div>
       <div class="card">
         <div class="card-header">
-          <h2>รายการอาหาร</h2>
+          <h2>FM-Progress</h2>
         </div>
         <div class="card-body">
           <table class="table table-hover">
             <thead>
               <tr>
                 <th style="width: 8.33%">ลำดับ</th>
-                <th style="width: 50%">รายการอาหาร</th>
-                <th style="width: 10%%">ราคา</th>
-                <th style="width: 31.66%">การดำเนินการ</th>
+                <th style="width: 50%">Project</th>
+                <th style="width: 20%">LastName</th>
+                <th style="width: 40%"></th>
               </tr>
             </thead>
             <tbody>
@@ -44,7 +44,7 @@
                 </td>
                 <td v-if="index === editIndex">
                   <input
-                    type="number"
+                    type="te"
                     :value="food.price"
                     class="form-control"
                     v-on:change="price = $event.target.value"
