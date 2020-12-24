@@ -17,7 +17,7 @@
             </div>
             <div class="col-md">
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" v-model="price" />
+                <input type="text" class="form-control" v-model="lastname" />
                 <label for="floatingInputGrid">LastName</label>
               </div>
             </div>
@@ -25,12 +25,7 @@
           <div class="row g-2">
             <div class="col-md">
               <div class="form-floating mb-3">
-                <input
-                  type="tel"
-                  class="form-control"
-                  id="phone-number"
-                  maxlength="10"
-                />
+                <input type="text" class="form-control" v-model="tel" />
                 <label for="floatingInputGrid">PhoneNumber1</label>
               </div>
             </div>
@@ -49,12 +44,7 @@
           </div>
 
           <div class="form-floating">
-            <select
-              class="form-select"
-              id="Building-Name"
-              aria-label="Floating label select example"
-            >
-            </select>
+            <input type="text" class="form-control" v-model="building" />
             <label for="floatingSelect">BuildingName</label>
           </div>
           <br />
@@ -197,16 +187,19 @@ export default {
   data() {
     return {
       name: "",
-      price: "",
+      lastname: "",
+      tel: "0",
+      building:""
     };
   },
   methods: {
     addFood() {
       if (this.name) {
-        let payload = { name: this.name, price: this.price };
+        let payload = { name: this.name, lastname: this.lastname,tel: this.tel, building: this.building };
         this.$store.dispatch("addFood", payload);
       }
     },
   },
 };
 </script>
+

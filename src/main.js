@@ -8,10 +8,10 @@ import axios from "axios";
 import App from "./App.vue";
 import FoodList from "./components/FoodList.vue";
 import CreateFood from "./components/CreateFood.vue";
-
+import vuetify from './plugins/vuetify';
 Vue.use(VueRouter);
 
-// เรียกใช้
+// เรียกใช้ 
 Vue.use(VueAxios, axios);
 
 const routes = [
@@ -33,5 +33,6 @@ Vue.config.productionTip = false;
 
 new Vue({
   render: h => h(App),
+  vuetify,
   router
 }).$mount("#app");

@@ -23,7 +23,9 @@ export const store = new Vuex.Store({
     },
     editFood(state, { payload }) {
       state.foods[payload.index].name = payload.name;
-      state.foods[payload.index].price = payload.price;
+      state.foods[payload.index].lastname = payload.lastname;
+      state.foods[payload.index].tel = payload.tel;
+      state.foods[payload.index].building = payload.building;
     }
   },
 

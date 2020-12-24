@@ -10,17 +10,21 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th style="width: 8.33%">ลำดับ</th>
-                <th style="width: 50%">Project</th>
-                <th style="width: 20%">LastName</th>
-                <th style="width: 40%"></th>
+                <th style="width: 5px">No.</th>
+                <th style="width: 5px">BuildingName</th>
+                <th style="width: 5px">Project</th>
+                <th style="width: 5px">LastName</th>
+                <th style="width: 5px">Tel</th>
+                <th style="width: 5px"></th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="(food,index) in $store.getters.foods" :key="index">
                 <td>{{ index + 1 }}</td>
+                <td v-if="index !== editIndex">{{ food.building }}</td>
                 <td v-if="index !== editIndex">{{ food.name }}</td>
-                <td v-if="index !== editIndex">{{ food.price }}</td>
+                <td v-if="index !== editIndex">{{ food.lastname }}</td>
+                <td v-if="index !== editIndex">{{ food.tel }}</td>
                 <td v-if="index !== editIndex">
                   <button
                     type="button"
@@ -33,6 +37,15 @@
                     v-on:click="openEdit(index,food)"
                   >แก้ไข</button>
                 </td>
+                 
+                 <td v-if="index === editIndex">
+                  <input
+                    type="text"
+                    :value="food.building"
+                    class="form-control"
+                    v-on:change="building = $event.target.value"
+                  />
+                </td>
 
                 <td v-if="index === editIndex">
                   <input
@@ -44,10 +57,18 @@
                 </td>
                 <td v-if="index === editIndex">
                   <input
-                    type="te"
-                    :value="food.price"
+                    type="text"
+                    :value="food.lastname"
                     class="form-control"
-                    v-on:change="price = $event.target.value"
+                    v-on:change="lastname = $event.target.value"
+                  />
+                </td>
+                <td v-if="index === editIndex">
+                  <input
+                    type="tel"
+                    :value="food.tel"
+                    class="form-control"
+                    v-on:change="tel = $event.target.value"
                   />
                 </td>
                 <td v-if="index === editIndex">
@@ -76,8 +97,10 @@ export default {
   data() {
     return {
       editIndex: -1,
+      building:"",
       name: "",
-      price: 0
+      lastname: "",
+      tel:""
     };
   },
   created() {
@@ -93,20 +116,28 @@ export default {
     },
     openEdit(index, food) {
       this.editIndex = index;
+      this.building = food.building;
       this.name = food.name;
-      this.price = food.price;
+      this.lastname = food.lastname;
+      this.tel = food.tel;
+      
     },
-    closeEdit(index) {
+    closeEdit() {
       this.editIndex = -1;
+      this.building = "";
       this.name = "";
-      this.price = 0;
+      this.lastname = "";
+      this.tel = "";
+   
     },
     editFood(_id) {
       let payload = {
         index: this.editIndex,
         _id: _id,
+        building: this.building,
         name: this.name,
-        price: this.price
+        lastname: this.lastname,
+        tel: this.tel
       };
       this.$store.dispatch("editFood", payload).then(this.closeEdit());
     }
