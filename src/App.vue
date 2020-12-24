@@ -31,8 +31,10 @@
         </ul>
       </div>
     </nav>
+    
     <router-view></router-view>
   </div>
+  
 </template>
 
 // ทำการประกาศ store โดยต้องประกาศ path ให้ตรงกับ store.js

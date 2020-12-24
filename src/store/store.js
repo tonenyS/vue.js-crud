@@ -26,6 +26,7 @@ export const store = new Vuex.Store({
       state.foods[payload.index].lastname = payload.lastname;
       state.foods[payload.index].tel = payload.tel;
       state.foods[payload.index].building = payload.building;
+      state.foods[payload.index].isp = payload.isp;
     }
   },
 

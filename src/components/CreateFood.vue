@@ -6,7 +6,7 @@
         <div class="card-header">
           <h2>AddProgress</h2>
         </div>
-        <br>
+        <br />
         <div class="card-body">
           <div class="row g-2">
             <div class="col-md">
@@ -58,13 +58,13 @@
             </div>
             <div class="col-md">
               <div class="form-floating mb-3">
-                <input class="form-control" type="number" id="Floor-No" />
+                <input type="text" class="form-control" v-model="Floor" />
                 <label for="floatingInputGrid">Floor No.</label>
               </div>
             </div>
             <div class="col-md">
               <div class="form-floating mb-3">
-                <input class="form-control" type="number" id="Room-No" />
+                <input type="text" class="form-control" v-model="Room" />
                 <label for="floatingInputGrid">Room No.</label>
               </div>
             </div>
@@ -73,7 +73,7 @@
           <div class="row g-2">
             <div class="col-md">
               <div class="form-floating mb-3">
-                <select class="form-select" id="ISP">
+                <select class="form-select" id="ISP" v-model="isp">
                   <option value="true">TRUE</option>
                   <option value="AIS">AIS</option>
                   <option value="3BB">3BB</option>
@@ -113,8 +113,22 @@
             </div>
             <div class="col-md">
               <div class="form-floating mb-3">
-                <select class="form-select" id="Team"> </select>
-                <label for="floatingInputGrid">Team</label>
+                 <select class="form-select" id="ISP" v-model="team">
+                  <option value="L-คิว">TRUE</option>
+                  <option value="L-นรินทร์">L-นรินทร์</option>
+                  <option value="L-ยงยุทธ">L-ยงยุทธ</option>
+                  <option value="L-ยุ">L-ยุ</option>
+                  <option value="L-วา">L-วา</option>
+                  <option value="PK-ช้าง">PK-ช้าง</option>
+                  <option value="PK-ดุง">PK-ดุง</option>
+                  <option value="PK-ตี๋">PK-ตี๋</option>
+                  <option value="PK-บาส">PK-บาส</option>
+                  <option value="PK-ประทวน">PK-ประทวน</option>
+                  <option value="PK -มิว">PK-มิว</option>
+                  <option value="PK -เลน">PK-เลน</option>
+                  <option value="PK -เสรี">PK-เสรี</option>
+                  <option value="DC -NN ฟู">DC-NNฟู</option>
+                </select>
               </div>
             </div>
             <div class="col-md">
@@ -172,7 +186,7 @@
               </div>
             </div>
           </div>
-          <br>
+          <br />
           <form v-on:submit.prevent="addFood()">
             <button type="submit" class="btn btn-primary">AddProgress</button>
           </form>
@@ -188,18 +202,30 @@ export default {
     return {
       name: "",
       lastname: "",
-      tel: "0",
-      building:""
+      tel: "",
+      building: "",
+      Floor: "",
+      Room: "",
+      isp: "",
+      team: ""
     };
   },
   methods: {
     addFood() {
       if (this.name) {
-        let payload = { name: this.name, lastname: this.lastname,tel: this.tel, building: this.building };
+        let payload = {
+          name: this.name,
+          lastname: this.lastname,
+          tel: this.tel,
+          building: this.building,
+          Floor: this.Floor,
+          Room: this.Room,
+          isp: this.isp,
+          team: this.team
+        };
         this.$store.dispatch("addFood", payload);
       }
     },
   },
 };
 </script>
-
