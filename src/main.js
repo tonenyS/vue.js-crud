@@ -8,6 +8,7 @@ import axios from "axios";
 import App from "./App.vue";
 import FoodList from "./components/FoodList.vue";
 import CreateFood from "./components/CreateFood.vue";
+import HomeMain from "./components/HomeMain.vue";
 import vuetify from './plugins/vuetify';
 Vue.use(VueRouter);
 
@@ -17,13 +18,18 @@ Vue.use(VueAxios, axios);
 const routes = [
   {
     name: "FoodList",
-    path: "/food_list",
+    path: "/FM_list",
     component: FoodList
   },
   {
     name: "CreateFood",
-    path: "/create_food",
+    path: "/create_FM",
     component: CreateFood
+  },
+  {
+    name: "HomeMain",
+    path: "/Home_main",
+    component: HomeMain
   }
 ];
 

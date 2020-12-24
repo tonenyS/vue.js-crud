@@ -107,13 +107,17 @@
           <div class="row g-2">
             <div class="col-md">
               <div class="form-floating mb-3">
-                <select class="form-select" id="Confirming"> </select>
+                <select type="text" class="form-control" v-model="Confirming">
+                  <option value="ยืนยัน">ยืนยัน</option>
+                  <option value="ลูกค้าขอเลื่อน">ลูกค้าขอเลื่อน</option>
+                  <option value="ติดต่อไม่ได้">ติดต่อไม่ได้</option>
+                </select>
                 <label for="floatingInputGrid">Confirming an appointment</label>
               </div>
             </div>
             <div class="col-md">
               <div class="form-floating mb-3">
-                 <select class="form-select" id="ISP" v-model="team">
+                <select class="form-select" id="ISP" v-model="team">
                   <option value="L-คิว">TRUE</option>
                   <option value="L-นรินทร์">L-นรินทร์</option>
                   <option value="L-ยงยุทธ">L-ยงยุทธ</option>
@@ -207,7 +211,8 @@ export default {
       Floor: "",
       Room: "",
       isp: "",
-      team: ""
+      team: "",
+      Confirming:""
     };
   },
   methods: {
@@ -221,7 +226,8 @@ export default {
           Floor: this.Floor,
           Room: this.Room,
           isp: this.isp,
-          team: this.team
+          team: this.team,
+          Confirming: this.Confirming,
         };
         this.$store.dispatch("addFood", payload);
       }

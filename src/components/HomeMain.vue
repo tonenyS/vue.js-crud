@@ -36,23 +36,6 @@
                 <td v-if="index !== editIndex">{{ food.Confirming }}</td>
                 <td v-if="index !== editIndex">{{ food.team }}</td>
 
-                <td v-if="index !== editIndex">
-                  <button
-                    type="button"
-                    class="btn btn-danger mr-2"
-                    v-on:click="deleteFood(index, food._id)"
-                  >
-                    ลบ
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-warning"
-                    v-on:click="openEdit(index, food)"
-                  >
-                    แก้ไข
-                  </button>
-                </td>
-
                 <td v-if="index === editIndex">
                   <input
                     type="text"
@@ -158,30 +141,13 @@
                     <option value="DC-NNฟู">DC-NNฟู</option></select
                   >
                 </td>
-                <td v-if="index === editIndex">
-                  <button
-                    type="button"
-                    class="btn btn-success mr-2"
-                    v-on:click="editFood(food._id)"
-                  >
-                    ยืนยัน
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    v-on:click="closeEdit(index)"
-                  >
-                    ยกเลิก
-                  </button>
-                </td>
-              </tr> 
+              </tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
   </div>
-  
 </template>
 
 <script>
@@ -210,45 +176,6 @@ export default {
     deleteFood(index, _id) {
       let payload = { index: index, _id: _id };
       this.$store.dispatch("deleteFood", payload);
-    },
-    openEdit(index, food) {
-      this.editIndex = index;
-      this.building = food.building;
-      this.name = food.name;
-      this.lastname = food.lastname;
-      this.tel = food.tel;
-      this.Floor = food.Floor;
-      this.Room = food.Room;
-      this.isp = food.isp;
-      this.team = food.team;
-      this.Confirming = food.Confirming;
-    },
-    closeEdit() {
-      this.editIndex = -1;
-      this.building = "";
-      this.name = "";
-      this.lastname = "";
-      this.Floor = "";
-      this.Room = "";
-      this.isp = "";
-      this.team = "";
-      this.Confirming = "";
-    },
-    editFood(_id) {
-      let payload = {
-        index: this.editIndex,
-        _id: _id,
-        building: this.building,
-        name: this.name,
-        lastname: this.lastname,
-        tel: this.tel,
-        Floor: this.Floor,
-        Room: this.Room,
-        isp: this.isp,
-        team: this.team,
-        Confirming: this.Confirming,
-      };
-      this.$store.dispatch("editFood", payload).then(this.closeEdit());
     },
   },
 };
