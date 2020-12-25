@@ -24,13 +24,13 @@
       <div class="collapse navbar-collapse" id="navContent">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <router-link :to="{ name: 'FoodList' }" class="nav-link"
-              >FM-Table</router-link
+            <router-link :to="{ name: 'CreateFood' }" class="nav-link"
+              >AddProgress</router-link
             >
           </li>
           <li class="nav-item">
-            <router-link :to="{ name: 'CreateFood' }" class="nav-link"
-              >AddProgress</router-link
+            <router-link :to="{ name: 'FoodList' }" class="nav-link"
+              >FM-Table</router-link
             >
           </li>
         </ul>

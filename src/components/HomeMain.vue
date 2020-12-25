@@ -10,17 +10,23 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th style="width:0px">No.</th>
-                <th style="width:0px">BuildingName</th>
-                <th style="width:0px">Project/Name</th>
-                <th style="width:0px">LastName</th>
-                <th style="width:0px">Tel</th>
-                <th style="width:0px">Floor</th>
-                <th style="width:0px">Room</th>
-                <th style="width:0px">ISP</th>
-                <th style="width:0px">Confirming</th>
-                <th style="width:0px">Team</th>
-                <th style="width:0px"></th>
+                <th>No.</th>
+                <th>BuildingName</th>
+                <th>Project/Name</th>
+                <th>LastName</th>
+                <th>Tel</th>
+                <th>Tel2</th>
+                <th>Floor</th>
+                <th>BuildingNo</th>
+                <th>Room</th>
+                <th>ISP</th>
+                <th>ISP-CODE</th>
+                <th>MemberNumber</th>
+                <th>Fees</th>
+                <th>Confirming</th>
+                <th>Team</th>
+                <th>Date</th>
+            
               </tr>
             </thead>
             <tbody>
@@ -30,116 +36,18 @@
                 <td v-if="index !== editIndex">{{ food.name }}</td>
                 <td v-if="index !== editIndex">{{ food.lastname }}</td>
                 <td v-if="index !== editIndex">{{ food.tel }}</td>
+                <td v-if="index !== editIndex">{{ food.tel2 }}</td>
                 <td v-if="index !== editIndex">{{ food.Floor }}</td>
+                <td v-if="index !== editIndex">{{ food.BuildingNo }}</td>
                 <td v-if="index !== editIndex">{{ food.Room }}</td>
                 <td v-if="index !== editIndex">{{ food.isp }}</td>
+                <td v-if="index !== editIndex">{{ food.ISPCode }}</td>
+                <td v-if="index !== editIndex">{{ food.MemberNumber }}</td>
+                <td v-if="index !== editIndex">{{ food.Fees }}</td>
                 <td v-if="index !== editIndex">{{ food.Confirming }}</td>
                 <td v-if="index !== editIndex">{{ food.team }}</td>
-
-                <td v-if="index === editIndex">
-                  <input
-                    type="text"
-                    :value="food.building"
-                    class="form-control"
-                    v-on:change="building = $event.target.value"
-                  />
-                </td>
-
-                <td v-if="index === editIndex">
-                  <input
-                    style="width:200px"
-                    type="text"
-                    :value="food.name"
-                    class="form-control"
-                    v-on:change="name = $event.target.value"
-                  />
-                </td>
-                <td v-if="index === editIndex">
-                  <input
-                    style="width:200px"
-                    type="text"
-                    :value="food.lastname"
-                    class="form-control"
-                    v-on:change="lastname = $event.target.value"
-                  />
-                </td>
-                <td v-if="index === editIndex">
-                  <input
-                    style="width:120px"
-                    type="tel"
-                    :value="food.tel"
-                    class="form-control"
-                    v-on:change="tel = $event.target.value"
-                  />
-                </td>
-                <td v-if="index === editIndex">
-                  <input
-                    style="width:75px"
-                    type="number"
-                    :value="food.Floor"
-                    class="form-control"
-                    v-on:change="Floor = $event.target.value"
-                  />
-                </td>
-                <td v-if="index === editIndex">
-                  <input
-                    style="width:75px"
-                    type="number"
-                    :value="food.Room"
-                    class="form-control"
-                    v-on:change="Room = $event.target.value"
-                  />
-                </td>
-
-                <td v-if="index === editIndex">
-                  <select
-                    style="width:85px"
-                    type="text"
-                    :value="food.isp"
-                    class="form-control"
-                    v-on:change="isp = $event.target.value"
-                    ><option value="true">TRUE</option>
-                    <option value="AIS">AIS</option>
-                    <option value="3BB">3BB</option>
-                    <option value="FiberNet">FiberNet</option>
-                    <option value="TXRX">TXRX</option>
-                    <option value="TOT">TOT</option>
-                  </select>
-                </td>
-                <td v-if="index === editIndex">
-                  <select
-                    style="width:85px"
-                    type="text"
-                    :value="food.Confirming"
-                    class="form-control"
-                    v-on:change="Confirming = $event.target.value"
-                    ><option value="ยืนยัน">ยืนยัน</option>
-                    <option value="ลูกค้าขอเลื่อน">ลูกค้าขอเลื่อน</option>
-                    <option value="ติดต่อไม่ได้">ติดต่อไม่ได้</option>
-                  </select>
-                </td>
-                <td v-if="index === editIndex">
-                  <select
-                    style="width:105px"
-                    type="text"
-                    :value="food.team"
-                    class="form-control"
-                    v-on:change="team = $event.target.value"
-                  >
-                    <option value="L-นรินทร์">L-นรินทร์</option>
-                    <option value="L-ยงยุทธ">L-ยงยุทธ</option>
-                    <option value="L-ยุ">L-ยุ</option>
-                    <option value="L-วา">L-วา</option>
-                    <option value="PK-ช้าง">PK-ช้าง</option>
-                    <option value="PK-ดุง">PK-ดุง</option>
-                    <option value="PK-ตี๋">PK-ตี๋</option>
-                    <option value="PK-บาส">PK-บาส</option>
-                    <option value="PK-ประทวน">PK-ประทวน</option>
-                    <option value="PK-มิว">PK-มิว</option>
-                    <option value="PK-เลน">PK-เลน</option>
-                    <option value="PK-เสรี">PK-เสรี</option>
-                    <option value="DC-NNฟู">DC-NNฟู</option></select
-                  >
+                <td v-if="index !== editIndex">{{ food.Date }}</td>
+                <td v-if="index !== editIndex">
                 </td>
               </tr>
             </tbody>
@@ -159,11 +67,18 @@ export default {
       name: "",
       lastname: "",
       tel: "",
+      tel2: "",
       Floor: "",
+      BuildingNo: "",
       Room: "",
       isp: "",
+      ISPCode: "",
+      MemberNumber: "",
+      Fees: "",
       team: "",
       Confirming: "",
+      Date: "",
+      
     };
   },
   created() {
@@ -176,6 +91,64 @@ export default {
     deleteFood(index, _id) {
       let payload = { index: index, _id: _id };
       this.$store.dispatch("deleteFood", payload);
+    },
+    openEdit(index, food) {
+      this.editIndex = index;
+      this.building = food.building;
+      this.name = food.name;
+      this.lastname = food.lastname;
+      this.tel = food.tel;
+      this.tel2 = food.tel2;
+      this.Floor = food.Floor;
+      this.BuildingNo = food.BuildingNo;
+      this.Room = food.Room;
+      this.isp = food.isp;
+      this.ISPCode = food.ISPCode;
+      this.MemberNumber = food.MemberNumber;
+      this.Fees = food.Fees;
+      this.team = food.team;
+      this.Confirming = food.Confirming;
+      this.Date = food.Date;
+    },
+    closeEdit() {
+      this.editIndex = -1;
+      this.building = "";
+      this.name = "";
+      this.lastname = "";
+      this.tel = "";
+      this.tel2 = "";
+      this.Floor = "";
+      this.BuildingNo = "";
+      this.Room = "";
+      this.isp = "";
+      this.ISPCode = "";
+      this.MemberNumber = "";
+      this.Fees = "";
+      this.team = "";
+      this.Confirming = "";
+      this.Date = "";
+    },
+    editFood(_id) {
+      let payload = {
+        index: this.editIndex,
+        _id: _id,
+        building: this.building,
+        name: this.name,
+        lastname: this.lastname,
+        tel: this.tel,
+        tel2: this.tel2,
+        Floor: this.Floor,
+        BuildingNo: this.BuildingNo,
+        Room: this.Room,
+        isp: this.isp,
+        ISPCode: this.ISPCode,
+        MemberNumber: this.MemberNumber,
+        Fees: this.Fees,
+        team: this.team,
+        Confirming: this.Confirming,
+        Date: this.Date,
+      };
+      this.$store.dispatch("editFood", payload).then(this.closeEdit());
     },
   },
 };

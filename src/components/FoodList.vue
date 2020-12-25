@@ -10,17 +10,21 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th style="width:0px">No.</th>
-                <th style="width:0px">BuildingName</th>
-                <th style="width:0px">Project/Name</th>
-                <th style="width:0px">LastName</th>
-                <th style="width:0px">Tel</th>
-                <th style="width:0px">Floor</th>
-                <th style="width:0px">Room</th>
-                <th style="width:0px">ISP</th>
-                <th style="width:0px">Confirming</th>
-                <th style="width:0px">Team</th>
-                <th style="width:0px"></th>
+                <th>No.</th>
+                <th>BuildingName</th>
+                <th>Project/Name</th>
+                <th>LastName</th>
+                <th>Tel</th>
+                <!-- <th>Tel2</th> -->
+                <th>Floor</th>
+                <th>Room</th>
+                <th>ISP</th>
+                <th>ISP-CODE</th>
+                <!-- <th>MemberNumber</th> -->
+                <!-- <th>Fees</th> -->
+                <th>Confirming</th>
+                <th>Team</th>
+                <th>Delete/Edit</th>
               </tr>
             </thead>
             <tbody>
@@ -30,12 +34,15 @@
                 <td v-if="index !== editIndex">{{ food.name }}</td>
                 <td v-if="index !== editIndex">{{ food.lastname }}</td>
                 <td v-if="index !== editIndex">{{ food.tel }}</td>
+                <!-- <td v-if="index !== editIndex">{{ food.tel2 }}</td> -->
                 <td v-if="index !== editIndex">{{ food.Floor }}</td>
                 <td v-if="index !== editIndex">{{ food.Room }}</td>
                 <td v-if="index !== editIndex">{{ food.isp }}</td>
+                <td v-if="index !== editIndex">{{ food.ISPCode }}</td>
+                <!-- <td v-if="index !== editIndex">{{ food.MemberNumber }}</td> -->
+                <!-- <td v-if="index !== editIndex">{{ food.Fees }}</td> -->
                 <td v-if="index !== editIndex">{{ food.Confirming }}</td>
                 <td v-if="index !== editIndex">{{ food.team }}</td>
-
                 <td v-if="index !== editIndex">
                   <button
                     type="button"
@@ -55,6 +62,7 @@
 
                 <td v-if="index === editIndex">
                   <input
+                    style="width:250px"
                     type="text"
                     :value="food.building"
                     class="form-control"
@@ -89,6 +97,15 @@
                     v-on:change="tel = $event.target.value"
                   />
                 </td>
+                <!-- <td v-if="index === editIndex">
+                  <input
+                    style="width:120px"
+                    type="tel"
+                    :value="food.tel2"
+                    class="form-control"
+                    v-on:change="tel2 = $event.target.value"
+                  />
+                </td> -->
                 <td v-if="index === editIndex">
                   <input
                     style="width:75px"
@@ -124,8 +141,35 @@
                   </select>
                 </td>
                 <td v-if="index === editIndex">
+                  <input
+                    style="width:120px"
+                    type="text"
+                    :value="food.ISPCode"
+                    class="form-control"
+                    v-on:change="ISPCode = $event.target.value"
+                  />
+                </td>
+                 <!-- <td v-if="index === editIndex">
+                  <input
+                    style="width:100px"
+                    type="text"
+                    :value="food.MemberNumber"
+                    class="form-control"
+                    v-on:change="MemberNumber = $event.target.value"
+                  />
+                </td>
+                <td v-if="index === editIndex">
+                  <input
+                    style="width:80px"
+                    type="text"
+                    :value="food.Fees"
+                    class="form-control"
+                    v-on:change="Fees = $event.target.value"
+                  />
+                </td> -->
+                <td v-if="index === editIndex">
                   <select
-                    style="width:85px"
+                    style="width:120px"
                     type="text"
                     :value="food.Confirming"
                     class="form-control"
@@ -174,14 +218,13 @@
                     ยกเลิก
                   </button>
                 </td>
-              </tr> 
+              </tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
   </div>
-  
 </template>
 
 <script>
@@ -193,11 +236,16 @@ export default {
       name: "",
       lastname: "",
       tel: "",
+      tel2: "",
       Floor: "",
       Room: "",
       isp: "",
+      ISPCode: "",
+      MemberNumber: "",
+      Fees: "",
       team: "",
       Confirming: "",
+      
     };
   },
   created() {
@@ -217,9 +265,13 @@ export default {
       this.name = food.name;
       this.lastname = food.lastname;
       this.tel = food.tel;
+      this.tel2 = food.tel2;
       this.Floor = food.Floor;
       this.Room = food.Room;
       this.isp = food.isp;
+      this.ISPCode = food.ISPCode;
+      this.MemberNumber = food.MemberNumber;
+      this.Fees = food.Fees;
       this.team = food.team;
       this.Confirming = food.Confirming;
     },
@@ -228,9 +280,14 @@ export default {
       this.building = "";
       this.name = "";
       this.lastname = "";
+      this.tel = "";
+      this.tel2 = "";
       this.Floor = "";
       this.Room = "";
       this.isp = "";
+      this.ISPCode = "";
+      this.MemberNumber = "";
+      this.Fees = "";
       this.team = "";
       this.Confirming = "";
     },
@@ -242,9 +299,13 @@ export default {
         name: this.name,
         lastname: this.lastname,
         tel: this.tel,
+        tel2: this.tel2,
         Floor: this.Floor,
         Room: this.Room,
         isp: this.isp,
+        ISPCode: this.ISPCode,
+        MemberNumber: this.MemberNumber,
+        Fees: this.Fees,
         team: this.team,
         Confirming: this.Confirming,
       };

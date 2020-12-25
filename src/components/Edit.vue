@@ -47,7 +47,7 @@
           <div class="row g-2">
             <div class="col-md">
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" v-model="BuildingNo" />
+                <input type="text" class="form-control" id="Building-No" />
                 <label for="floatingInputGrid">Building No.</label>
               </div>
             </div>
@@ -112,7 +112,8 @@
             </div>
             <div class="col-md">
               <div class="form-floating mb-3">
-                <select class="form-select" id="ISP" v-model="team">                 
+                <select class="form-select" id="ISP" v-model="team">
+                  <option value="L-คิว">TRUE</option>
                   <option value="L-นรินทร์">L-นรินทร์</option>
                   <option value="L-ยงยุทธ">L-ยงยุทธ</option>
                   <option value="L-ยุ">L-ยุ</option>
@@ -127,12 +128,11 @@
                   <option value="PK -เสรี">PK-เสรี</option>
                   <option value="DC -NN ฟู">DC-NNฟู</option>
                 </select>
-                <label for="floatingInputGrid">TechnicianTeam</label>
               </div>
             </div>
             <div class="col-md">
               <div class="form-floating mb-3">
-                <input type="date" class="form-control" v-model="Date" />
+                <input class="form-control" type="date" value="" id="Date" />
                 <label for="floatingInputGrid">Date</label>
               </div>
             </div>
@@ -204,7 +204,6 @@ export default {
       tel: "",
       tel2: "",
       building: "",
-      BuildingNo:"",
       Floor: "",
       Room: "",
       isp: "",
@@ -212,8 +211,7 @@ export default {
       MemberNumber: "",
       Fees: "",
       team: "",
-      Confirming:"",
-      Date:"",
+      Confirming:""
     };
   },
   methods: {
@@ -225,16 +223,14 @@ export default {
           tel: this.tel,
           tel2: this.tel2,
           building: this.building,
-          BuildingNo: this.BuildingNo,
           Floor: this.Floor,
           Room: this.Room,
           isp: this.isp,
-          ISPCode: this.ISPCode,
+          ISPCode: this.ISPCode,        
           team: this.team,
           MemberNumber: this.MemberNumber,
           Fees: this.Fees,
           Confirming: this.Confirming,
-          Date: this.Date,
         };
         this.$store.dispatch("addFood", payload);
       }
