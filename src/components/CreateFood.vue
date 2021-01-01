@@ -178,22 +178,6 @@
 								<label for="floatingInputGrid">TechnicianTeam</label>
 							</div>
 						</div>
-						<div class="col-md">
-							<div class="form-floating mb-3">
-								<input
-									type="date"
-									class="form-control"
-									v-model="progress.lastDate"
-								/>
-								<label for="floatingInputGrid">lastDate</label>
-							</div>
-						</div>
-						<div class="col-md">
-							<div class="form-floating mb-3">
-								<input class="form-control" type="time" value="" id="Time" />
-								<label for="floatingInputGrid">Time</label>
-							</div>
-						</div>
 					</div>
 
 					<div class="form-floating mb-3">
@@ -238,8 +222,11 @@
 						</div>
 					</div>
 					<br />
-					<form v-on:submit.prevent="addFood()">
+					<form v-if="mode === 'create'" v-on:submit.prevent="addFood()">
 						<button type="submit" class="btn btn-primary">AddProgress</button>
+					</form>
+					<form v-if="mode === 'edit'" v-on:submit.prevent="editFood()">
+						<button type="submit" class="btn btn-warning">EditProgress</button>
 					</form>
 				</div>
 			</div>
@@ -251,6 +238,7 @@
 export default {
 	data() {
 		return {
+			mode: '',
 			progress: {
 				building: '',
 				buildingNo: '',
@@ -273,13 +261,30 @@ export default {
 				SubStatus: '',
 				DateConnect: '',
 				DateDisconnect: '',
+				_id: '',
 			},
 		};
 	},
+	created() {
+		if (this.$route.params.id) {
+			this.mode = 'edit';
+			console.log(this.$store.getters.foods[this.$route.params.id]);
+			this.progress = this.$store.getters.foods[this.$route.params.id];
+		} else {
+			this.mode = 'create';
+			console.log('create mode');
+		}
+	},
 	methods: {
 		addFood() {
+			this.progress.lastDate = new Date().toLocaleString();
+			delete this.progress._id;
 			this.$store.dispatch('addFood', this.progress);
 			alert('save success');
+		},
+		editFood() {
+			this.$store.dispatch('editFood', this.progress);
+			alert('edit success');
 		},
 	},
 };

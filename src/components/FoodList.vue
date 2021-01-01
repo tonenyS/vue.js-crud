@@ -54,7 +54,7 @@
 									<button
 										type="button"
 										class="btn btn-warning"
-										v-on:click="openEdit(index, food)"
+										v-on:click="openEdit(index)"
 									>
 										แก้ไข
 									</button>
@@ -268,21 +268,22 @@ export default {
 			let payload = { index: index, _id: _id };
 			this.$store.dispatch('deleteFood', payload);
 		},
-		openEdit(index, food) {
-			this.editIndex = index;
-			this.building = food.building;
-			this.name = food.name;
-			this.lastname = food.lastname;
-			this.tel = food.tel;
-			this.tel2 = food.tel2;
-			this.Floor = food.Floor;
-			this.Room = food.Room;
-			this.isp = food.isp;
-			this.ISPCode = food.ISPCode;
-			this.MemberNumber = food.MemberNumber;
-			this.Fees = food.Fees;
-			this.team = food.team;
-			this.Confirming = food.Confirming;
+		openEdit(index) {
+			this.$router.push(`/create_FM/${index}`);
+			// this.editIndex = index;
+			// this.building = food.building;
+			// this.name = food.name;
+			// this.lastname = food.lastname;
+			// this.tel = food.tel;
+			// this.tel2 = food.tel2;
+			// this.Floor = food.Floor;
+			// this.Room = food.Room;
+			// this.isp = food.isp;
+			// this.ISPCode = food.ISPCode;
+			// this.MemberNumber = food.MemberNumber;
+			// this.Fees = food.Fees;
+			// this.team = food.team;
+			// this.Confirming = food.Confirming;
 		},
 		closeEdit() {
 			this.editIndex = -1;
